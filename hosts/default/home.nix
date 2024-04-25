@@ -29,8 +29,16 @@
   # environment.
   home.packages = with pkgs; [
     neovim
+    bun
+    deno
+    dotnet-sdk_8
+    nodejs_21
+    python313Full
+    rustup
+    nodePackages_latest.pnpm
     signal-desktop
     xdragon
+    zoom-us
     toilet
     fortune
     nitch

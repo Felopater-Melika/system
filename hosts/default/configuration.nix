@@ -219,7 +219,7 @@ in {
     device = "/swapfile";
     size = 8192; # Size in MB for an 8GB swap file
   }];
-  services.openssh.enable = true;
+
   systemd.services.logiops = {
     description = "An unofficial userspace driver for HID++ Logitech devices";
     serviceConfig = {

@@ -3,22 +3,22 @@
 {
   programs = {
     zsh = {
-      # oh-my-zsh = {
-      # enable = true;
-      # custom = "/home/philopater/.config/zsh-custom";
-      # plugins = [
-      #   "forgit"
-      #   "appup"
-      #   "kctl"
-      #   "zsh-dotnet-completion"
-      #   "docker"
-      #   "npm"
-      #   "vi-mode"
-      #   "nix-shell"
-      #   "F-Sy-H"
-      #   "fzf-tab"
-      # ];
-      # };
+      oh-my-zsh = {
+        enable = true;
+        custom = "/home/philo/.config/zsh-custom";
+        plugins = [
+          #   "forgit"
+          #   "appup"
+          #   "kctl"
+          #   "zsh-dotnet-completion"
+          #   "docker"
+          #   "npm"
+          #   "vi-mode"
+          #   "nix-shell"
+          #   "F-Sy-H"
+          "fzf-tab"
+        ];
+      };
       enable = true;
       dotDir = ".config/zsh";
 
@@ -134,6 +134,39 @@
 
         cleanup-nix = "sudo nix-collect-garbage -d";
       };
+    };
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+
+    changeDirWidgetOptions = [ "--preview 'tree -C {} | head -200'" ];
+
+    defaultCommand = "rg --files";
+
+    defaultOptions = [ "--height 90%" "--border" ];
+
+    fileWidgetCommand = "rg --files";
+    fileWidgetOptions = [
+      "--preview 'bat -n --color=always {}'"
+      "--bind 'ctrl-/:change-preview-window(down|hidden|)'"
+    ];
+
+    tmux.enableShellIntegration = true;
+    colors = {
+      "bg+" = "#313244"; # Surface0
+      "fg+" = "#cdd6f4"; # Text
+      "hl+" = "#f38ba8"; # Red
+      bg = "#313244"; # Surface0
+      fg = "#cdd6f4"; # Text
+      header = "#f38ba8"; # Red
+      hl = "#f38ba8"; # Red
+      info = "#cba6f7"; # Mauve
+      marker = "#cdd6f4"; # Text
+      pointer = "#cdd6f4"; # Text
+      prompt = "#cba6f7"; # Mauve
+      spinner = "#cdd6f4"; # Text
     };
   };
 }
