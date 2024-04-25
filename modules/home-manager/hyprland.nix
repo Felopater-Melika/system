@@ -354,7 +354,7 @@
       # exec-once = swayidle -w timeout 300 '/home/philopater/.config/hypr/scripts/lockscreen' timeout 600 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
     '';
   };
-
+  xdg.portal.config.common.default = "*";
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
   home.packages = with pkgs; [
