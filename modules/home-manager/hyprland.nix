@@ -5,6 +5,14 @@
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
+    settings = {
+            "$mainMod" = "SUPER";
+            monitor = [
+              "DP-1,5120x1440@120,0x0,1"
+              "eDP-1,2560x1600@120,5120x0,2"
+            ];
+
+    };
     extraConfig = ''
       $rosewaterAlpha = f5e0dc
       $flamingoAlpha  = f2cdcd
@@ -68,12 +76,7 @@
       $mantle    = 0xff181825
       $crust     = 0xff11111b
 
-      $mainMod = SUPER
-
       exec-once = pypr
-      #-- Output ----------------------------------------------------
-      monitor=HDMI-A-1,3440x1440@99.991997,1280x0,1
-      monitor=eDP-1,2560x1600@120,0x0,2
       #-copeFuzzyCommandSearch) Input ----------------------------------------------------
       # Configure mouse and touchpad here.
       input {
@@ -97,9 +100,6 @@
       #-- General ----------------------------------------------------
       # General settings like MOD key, Gaps, Colors, etc.
       general {
-          sensitivity=1.0
-      	 apply_sens_to_raw=0
-
           gaps_in=5
           gaps_out=10
 
@@ -368,21 +368,7 @@
     swappy
     waybar
     rofi-wayland
-    (pkgs.python3Packages.buildPythonPackage rec {
-      pname = "pyprland";
-      version = "1.4.1";
-      src = pkgs.fetchPypi {
-        inherit pname version;
-        sha256 = "sha256-JRxUn4uibkl9tyOe68YuHuJKwtJS//Pmi16el5gL9n8=";
-      };
-      format = "pyproject";
-      propagatedBuildInputs = with pkgs; [
-        python3Packages.setuptools
-        python3Packages.poetry-core
-        poetry
-      ];
-      doCheck = false;
-    })
+    pyprland
   ];
 
   home.file.".config/hypr/pyprland.json".text = ''
@@ -399,10 +385,4 @@
       }
     }
   '';
-
-  # You can also include other related configurations here, for example:
-  # programs.hyprland = {
-  #   enable = true;
-  #   # Additional program-specific settings...
-  # };
 }

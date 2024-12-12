@@ -122,7 +122,7 @@
         open = "xdg-open";
         k = "kubectl";
 
-        sys = "z sys";
+        sys = "z ni";
 
         conf = "z .config";
 

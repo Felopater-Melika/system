@@ -1,5 +1,5 @@
 { pkgs, lib, inputs, ... }:
-let spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
+let spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
 in {
   # allow spotify to be installed if you don't have unfree enabled already
   nixpkgs.config.allowUnfreePredicate = pkg:

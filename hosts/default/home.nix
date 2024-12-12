@@ -30,9 +30,9 @@
   home.packages = with pkgs; [
     neovim
     bun
+    vscode
     deno
     dotnet-sdk_8
-    nodejs_21
     python313Full
     rustup
     nodePackages_latest.pnpm
@@ -45,6 +45,7 @@
     neofetch
     httpie
     wlogout
+    prismlauncher
     zathura
     mpd
     mpv
@@ -83,7 +84,7 @@
     gammastep
     gitflow
     lavat
-    gnome.nautilus
+    nautilus
     boxes
     blanket
     ponysay

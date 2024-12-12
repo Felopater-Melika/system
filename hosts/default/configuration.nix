@@ -4,12 +4,12 @@
 
 { config, pkgs, inputs, stable-pkgs, ... }:
 let
-  tokyo-night-sddm =
-    pkgs.libsForQt5.callPackage ./../../modules/nixos/tokyo-night-sddm.nix { };
+  # tokyo-night-sddm =
+    #pkgs.libsForQt5.callPackage ./../../modules/nixos/tokyo-night-sddm.nix { };
 in {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./../../modules/nixos/sddm.nix
+    # ./../../modules/nixos/sddm.nix
     ./../../modules/nixos/font.nix
     inputs.home-manager.nixosModules.default
   ];
@@ -71,13 +71,13 @@ in {
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.desktopManager.gnome.enable = false;
-  services.xserver.displayManager.gdm.enable = false;
+  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
   programs.hyprland.enable = true;
   programs.hyprland.package =
     inputs.hyprland.packages."${pkgs.system}".hyprland;
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.theme = "tokyo-night-sddm";
+  # services.displayManager.sddm.enable = true;
+  # services.displayManager.sddm.theme = "tokyo-night-sddm";
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -89,7 +89,6 @@ in {
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -176,8 +175,8 @@ in {
     blueman
     bluez
     unzip
-    stable-pkgs.prismlauncher-qt5
-    tokyo-night-sddm
+    # stable-pkgs.prismlauncher-qt5
+    # tokyo-night-sddm
   ];
 
   systemd.oomd.enableRootSlice = true;

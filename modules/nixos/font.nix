@@ -3,15 +3,16 @@
 {
   fonts = {
     packages = with pkgs; [
-      noto-fonts
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       noto-fonts-emoji
       font-awesome
       source-han-sans
       source-han-sans-japanese
       source-han-serif-japanese
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.zed-mono
     ];
+
     fontconfig = {
       enable = true;
       defaultFonts = {
